@@ -68,4 +68,18 @@ A long list of requirements if there is one. The UI I created for the project do
 
 I include this last point because I rarely incorporated audio in my projects. Updating the UI when the different buttons are clicked should be instead relatively simpler.
 
-<!-- ## React.js -->
+## React.js
+
+The following component-based structure is included on the basis of the HTML markup created for the project's UI.
+
+- `index.js` renders the stateful component responsible for the application;
+
+- `App.js` manages the state and includes the components which render the data.
+
+- `AppVisuals` which relay the status of the timer. Visual, timer, string.
+
+- `AppControls` includes the buttons to start/pause and reset the timer.
+
+- `AppInputs` allows to tweak the settings behind the application. 
+
+The application makes use of quite a few `<svg>` elements, which are included as stateless functional components. Their only job is rendering a single element.
