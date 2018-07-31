@@ -1,0 +1,62 @@
+.AppControls {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+}
+.AppControls button {
+  width: 4.25rem;
+  height: 4.25rem;
+  border-radius: 50%;
+  background: inherit;
+  -webkit-box-shadow: 0 0 0 1px #ececec, 0 0 0 3px #324252;
+          box-shadow: 0 0 0 1px #ececec, 0 0 0 3px #324252;
+  border: none;
+  outline: none;
+  color: #324252;
+  -webkit-transition: all 0.15s ease-out;
+  transition: all 0.15s ease-out;
+}
+.AppControls button:hover,
+.AppControls button:focus {
+  -webkit-box-shadow: 0 0 0 2px #ececec, 0 0 0 7px #324252;
+          box-shadow: 0 0 0 2px #ececec, 0 0 0 7px #324252;
+}
+.AppControls button:active {
+  background: #324252;
+  color: #ececec;
+  -webkit-transform: scaleX(1.2) scaleY(1.08);
+          transform: scaleX(1.2) scaleY(1.08);
+}
+.AppControls button svg {
+  width: 80%;
+  height: 80%;
+  fill: currentColor;
+}
+
+
+@media (max-width: 600px) {
+  .AppControls {
+    grid-column: span 1;
+    margin: 0;
+  }
+  .AppControls {
+    margin: 10vh 0;
+    -webkit-box-orient: horizontal;
+    -webkit-box-direction: normal;
+        -ms-flex-direction: row;
+            flex-direction: row;
+    width: 100%;
+    -ms-flex-pack: distribute;
+        justify-content: space-around;
+  }
+  .AppControls button {
+    width: 3.75rem;
+    height: 3.75rem;
+  }
+}

@@ -1,0 +1,35 @@
+@import url("https://fonts.googleapis.com/css?family=Ubuntu|Nova+Mono");
+/* define the fonts and colors used in the project
+- Nova Mono for the timer 
+- Ubuntu for the input's text
+
+- #ECECEC for the application background
+- #324252 for the application theme (color and body's background)
+*/
+:root {
+  --font-timer: 'Nova Mono', monospace;
+  --font-text: 'Ubuntu', sans-serif;
+
+  --color-theme-white: #ececec;
+  --color-theme-light: #324252;
+  --color-theme-dark: #192129;
+}
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+body {
+  width: 100%;
+  font-family: var(--font-text);
+  color: var(--color-theme-light);
+  background: -webkit-gradient(linear, left top, right top, from(var(--color-theme-light)), color-stop(var(--color-theme-dark)), to(var(--color-theme-light)));
+  background: linear-gradient(to right, var(--color-theme-light), var(--color-theme-dark), var(--color-theme-light));
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+}
