@@ -13,13 +13,13 @@ const Input = (props) => {
         <label>{props.for} session</label>
 
         <div className="InputSession">
-          <button onClick={props.increment}>
+          <button onClick={props.increment} id={props.reference[0]}>
             <PlayButton />
           </button>
 
           <h2>{props.value}</h2>
 
-          <button onClick={props.decrement}>
+          <button onClick={props.decrement} id={props.reference[0]}>
             <PlayButton />
           </button>
 

@@ -13,12 +13,12 @@ const AppControls = (props) => {
 
   return (
     <div className="AppControls">
-      <button onClick={props.startPauseTimer}>
+      <button onClick={props.startPauseTimer} id="start_stop">
         {
           props.isRunning ? <PauseButton />: <PlayButton />
         }
       </button>
-      <button onClick={props.resetTimer}>
+      <button onClick={props.resetTimer} id="reset">
         <ResetButton />
       </button>
     </div>

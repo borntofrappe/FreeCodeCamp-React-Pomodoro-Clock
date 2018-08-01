@@ -139,7 +139,7 @@ class App extends Component {
   incrementWorking() {
     if(!this.state.isRunning) {
       let working = this.state.working;
-      if(working >= 0 && working < 60) {
+      if(working >= 1 && working < 60) {
         this.setState({
           working: working + 1,
           timer: {
@@ -154,7 +154,7 @@ class App extends Component {
   decrementWorking() {
     if(!this.state.isRunning) {
       let working = this.state.working;
-      if(working > 0 && working <= 60) {
+      if(working > 1 && working <= 60) {
         this.setState({
           working: working - 1,
           timer: {
@@ -168,9 +168,10 @@ class App extends Component {
   }
 
   incrementBreak() {
+    // small caveat: break is not a valid name for a variable
     if(!this.state.isRunning) {
       let breaky = this.state.break;
-      if(breaky >= 0 && breaky < 60) {
+      if(breaky >= 1 && breaky < 60) {
         this.setState({
           break: breaky + 1,
           timer: {
@@ -186,7 +187,7 @@ class App extends Component {
   decrementBreak() {
     if(!this.state.isRunning) {
       let breaky = this.state.break;
-      if(breaky > 0 && breaky <= 60) {
+      if(breaky > 1 && breaky <= 60) {
         this.setState({
           break: breaky - 1,
           timer: {

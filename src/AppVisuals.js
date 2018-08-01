@@ -36,8 +36,8 @@ const AppVisuals = (props) => {
     return (
       <div className="AppVisuals">
         <div className="VisualsHourglass"></div>
-        <h2 className="VisualsSession">{session}</h2>
-        <h2 className="VisualsTimer">
+        <h2 className="VisualsSession" id="timer-label">{session}</h2>
+        <h2 className="VisualsTimer" id="time-left">
           {minutes >= 10 ? minutes : `0${minutes}`}
           :
           {seconds >= 10 ? seconds : `0${seconds}`}

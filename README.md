@@ -30,31 +30,31 @@ In order to fulfill the requirements of the freeCodeCamp testing suite, the proj
 
 - [ ] there exist an element with `id="break-label` containing a string, as well as an element with `id="session-label` with again a string.
 
-- [ ] there exist two clickable elements with `id="break-decrement` and `id="break-increment`, as well as two clickable elements with `id="session-decrement` and `id="session-increment`.
+- [x] there exist two clickable elements with `id="break-decrement` and `id="break-increment`, as well as two clickable elements with `id="session-decrement` and `id="session-increment`.
 
 - [ ] there exist an element with `id="break-length` displaying `5` by default, as well as an elemen wih `id="session-length`, displaying by default `25`.
 
-- [ ] there exist an element with `id="timer-label`, which is something I haven't included in my UI. This ought to contain a string indicating that the session is begun. (showing how the timer relays a working or break session)
+- [x] there exist an element with `id="timer-label`, which is something I haven't included in my UI. This ought to contain a string indicating that the session is begun. (showing how the timer relays a working or break session)
 
-- [ ] there exist an element with `id="time-left`, always displaying the remaining time in the `mm:ss` format.
+- [x] there exist an element with `id="time-left`, always displaying the remaining time in the `mm:ss` format.
 
-- [ ] there exist a clickable element with `id="start_stop"`, which sort of ruins my original plans of showing three buttons, but something which can be easily fixed by including the different SVG assets depending on whether or not the timer is running.
+- [x] there exist a clickable element with `id="start_stop"`, which sort of ruins my original plans of showing three buttons, but something which can be easily fixed by including the different SVG assets depending on whether or not the timer is running.
 
-- [ ] there exist a clickable element with `id="reset`.
+- [x] there exist a clickable element with `id="reset`.
 
-- [ ] upon clicking on `#reset` the timer should stop and the default value for `id="break-length` and `id="session-length` should be restored (to `5` and `25`). The element with `id="time-left` should also be reset to its default state.
+- [x] upon clicking on `#reset` the timer should stop and the default value for `id="break-length` and `id="session-length` should be restored (to `5` and `25`). The element with `id="time-left` should also be reset to its default state.
 
-- [ ] when clicking on the _decrement_ and _increment_ buttons, the attachd value for the break and session length should be decremented and incremented respectively by 1.
+- [x] when clicking on the _decrement_ and _increment_ buttons, the attachd value for the break and session length should be decremented and incremented respectively by 1.
 
-- [ ] the length of a break or of a session ought to be in the `[1, 60]` range.
+- [x] the length of a break or of a session ought to be in the `[1, 60]` range.
 
-- [ ] upon clicking `#start_stop`, the timer should begin running from the displayed value.
+- [x] upon clicking `#start_stop`, the timer should begin running from the displayed value.
 
-- [ ] when the timer is running, it should be decremented every 1000ms and the UI should display a matching value in `#time-left`.
+- [x] when the timer is running, it should be decremented every 1000ms and the UI should display a matching value in `#time-left`.
 
-- [ ] if the timer is running, upon clicking `#start_stop`, the timer should pause. 
+- [x] if the timer is running, upon clicking `#start_stop`, the timer should pause. 
 
-- [ ] if the timer is paused, upon clicking `#start_stop`, the timer should start again, from the paused value. 
+- [x] if the timer is paused, upon clicking `#start_stop`, the timer should start again, from the paused value. 
 
 - [ ] upon hitting `00:00`, a new timer should begin and the `#time-label` should relay of the change of session (from working to break and vice versa). Moreover, the timer should take the value from the respective _length_ element, `id="break-length` or `id="session-length`.
 
@@ -311,3 +311,5 @@ let sessionLeft = minutes * 60 + seconds;
 let sessionPercentage = Math.floor(sessionLeft/sessionLength*100);
 root.style.setProperty("--gradient-height", `${sessionPercentage}%`);
 ```
+
+Finally, I considered the user stories to fulfill each one of them.

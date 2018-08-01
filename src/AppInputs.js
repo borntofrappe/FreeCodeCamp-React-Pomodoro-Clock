@@ -11,11 +11,13 @@ const AppInputs = (props) => {
     return (
       <div className="AppInputs">
         <Input
+          reference={['session-increment', 'session-decrement']}
           for="working"
           value={props.working}
           increment={props.incrementWorking}
           decrement={props.decrementWorking} />
         <Input
+          reference={['break-increment', 'break-decrement']}
           for="break"
           value={props.break}
           increment={props.incrementBreak}
