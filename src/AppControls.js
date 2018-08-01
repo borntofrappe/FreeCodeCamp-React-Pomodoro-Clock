@@ -4,17 +4,16 @@ import PlayButton from './svg/PlayButton';
 import PauseButton from './svg/PauseButton';
 import ResetButton from './svg/ResetButton';
 
-const AppControls = () => {
+const AppControls = (props) => {
 
-  let isRunning = false;
   return (
     <div className="AppControls">
-      <button>
+      <button onClick={props.startPauseTimer}>
         {
-          isRunning ? <PauseButton />: <PlayButton />
+          props.isRunning ? <PauseButton />: <PlayButton />
         }
       </button>
-      <button>
+      <button onClick={props.resetTimer}>
         <ResetButton />
       </button>
     </div>

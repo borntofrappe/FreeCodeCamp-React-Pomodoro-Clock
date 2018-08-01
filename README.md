@@ -124,4 +124,139 @@ Starting with the app's functionalities:
 
   - `timer`; itself an object specifying the `session`, its `minutes` and `seconds`. All values which the timer needs to consider. 
   
-  I already realize how this structure is far from complete, but it is a good starting point for the first section of the application.
+  I already realize how this structure is far from complete, but it is a good starting point for the first section of the application. By updating the values held in `state.timer`, in `App.js`, it ought to be possible to pass to the child components the exact values to render the appropriate UI.
+
+
+- `AppControls` needs to 
+
+  1. start and pause the timer;
+
+  1. stop and reset the timer;
+  
+  1. update the UI of the button responsible for starting/stopping the timer to show the different SVG assets.
+
+  Starting with this last point, as it is the most straightforward to implement, it is possible to leverage the `isRunning` property of the state, and toggle it whenever the play and pause button is clicked.
+
+  Of course the button also needs a function which updates the state, and allows to flip the boolean from `true` to `false` and vice versa.
+
+  ```JSX
+  toggleIsRunning() {
+    this.setState({
+      isRunning: !this.state.isRunning
+    });
+  }
+  ```
+
+  The method, bound in the constructor function and passed as property to the child component, allows the button to show different SVG elements.
+
+  ```JSX
+  <button onClick={props.toggleIsRunning}>
+    {
+      props.isRunning ? <PauseButton />: <PlayButton />
+    }
+  </button>
+  ```
+
+  This solves only one point of the component's purpose, but one nice enough to warrant a prolonged explanation.
+
+  In order to have the buttons actually update the timer and the session, and not just the buttons themselves, a few functions are included in the constructor.
+
+  **Important**
+
+  As I needed to keep track of the interval, to avoid overlapping instances and above all stop it as needed, I included a property in the state, which is updated with a reference to whichever interval is instantiated.
+
+  ```JSX
+  this.state = {
+    interval: 0
+  }
+  ```
+
+  - `startPauseTimer` initiates an interval if a timer is not running. If a timer is already running, it clears the existing one and does nothing else (so as to preserve the values displayed on the page). 
+  
+  ```JSX
+  startPauseTimer() {
+    if(this.state.isRunning) {
+      clearInterval(this.state.interval);
+    }
+    else {
+      let interval = setInterval(this.timerIsRunning, 1000);
+      this.setState({
+        interval: interval
+      })
+    }
+  }
+  ```
+
+  This function can actually take the previous function into consideration, as to update the button UI appropriately. It is possible to either call the function itself.
+
+  ```JSX
+  startPauseTimer() {
+    this.toggleIsRunning();
+    // rest of the function 
+  }
+  ```
+  
+
+  - `timerIsRunning` is included, as visible in the previous function, to actually manage the timer. It is the function which gets called every second, and it updates the values of the timer according to what is expected from a timer counting down.
+
+  ```JSX
+  timerIsRunning() {
+    let session = this.state.timer.session;
+    let minutes = this.state.timer.minutes;
+    let seconds = this.state.timer.seconds;
+
+    if(seconds === 0) {
+      if(minutes === 0) {
+        if(session === 'working') {
+          session = 'break';
+          minutes = this.state.break;
+        }
+        else {
+          session = 'working';
+          minutes = this.state.working;
+        }
+        seconds = 0;
+      }
+      else {
+        minutes --;
+        seconds = 59;
+      }
+    }
+    else {
+      seconds --;
+    }
+    this.setState({
+      timer: {
+        session: session,
+        minutes: minutes,
+        seconds: seconds
+      }
+    });
+  }
+  ```
+
+  - `resetTimer` is finally defined to stop the timer (clearing the interval) and restoring the UI to its original status.
+
+  ```JSX
+  resetTimer() {
+    clearInterval(this.state.interval);
+    this.setState({
+        isRunning: false,
+        interval: 0,
+        working: 25,
+        break: 5,
+        timer: {
+          session: 'working',
+          minutes: 25,
+          seconds: 0
+        }
+    });
+  }
+  ```
+
+  `startPauseTimer` and `resetTimer` are passed as properties to `AppControls` and included in the respective `onClick` attributes of the buttons rendered by the component.
+
+  _Something to consider_
+
+  Actually using the application first-hand made me realize how the logic of the timer is a little weak when it comes to include the value of `minutes`. Indeed minutes are included in the `working`, `break` and `timer.minutes` fields. I included a timer for clarity, to isolate its logic in the state, but it might not be the best solution. `working` and `timer.minutes` need to basically hold the same value, which is kind of a bother.
+

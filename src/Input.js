@@ -12,7 +12,7 @@ const Input = () => {
             <PlayButton />
           </button>
 
-          <input type="text" value={25}/>
+          {/* <input type="text" value={25}/> */}
 
           <button>
             <PlayButton />

@@ -17,8 +17,8 @@ const AppVisuals = (props) => {
   */
 
   let session = props.timer.session;
-  let minutes = (props.timer.minutes > 10) ? props.timer.minutes : `0${props.timer.minutes}`;
-  let seconds = (props.timer.seconds > 10) ? props.timer.seconds : `0${props.timer.seconds}`;
+  let minutes = (props.timer.minutes >= 10) ? props.timer.minutes : `0${props.timer.minutes}`;
+  let seconds = (props.timer.seconds >= 10) ? props.timer.seconds : `0${props.timer.seconds}`;
     
     return (
       <div className="AppVisuals">
