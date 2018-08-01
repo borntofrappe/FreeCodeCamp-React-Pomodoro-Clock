@@ -1,6 +1,9 @@
 .AppInputs {
+  /* spread the third section across the entirety of the width */
   grid-column: span 3;
+  /* separate the third section from the first two, more than the second is separated by the first */
   margin: 20vh 0 0;
+  /* display the wrapping div one on top of the other */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -8,20 +11,21 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  /* center horizontally */
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  /* border top to include a line which separates the inputs from the main app */
   padding-top: 1rem;
-  border-top: 3px solid #4f6881;
+  border-top: 3px solid var(--color-theme-lighter);
 }
 
 
-
+/* for smaller viewports have the section stretch over the entire viewport and reduce the white space from the surrounding elements */
 @media (max-width: 600px) {
   .AppInputs {
     grid-column: span 1;
-    margin: 10vh;
+    margin: 5vh 0;
     text-align: center;
   }
-  
 }

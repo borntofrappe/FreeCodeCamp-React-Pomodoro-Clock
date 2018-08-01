@@ -1,6 +1,6 @@
 import React from 'react';
-// import './css/PlayButton.css';
 
+// render an SVG element displaying a right-facing arrow
 const PlayButton = () => {
     return (
       <svg viewBox="0 0 100 100">

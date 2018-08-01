@@ -1,6 +1,6 @@
 import React from 'react';
-// import './css/PauseButton.css';
 
+// render an SVG element displaying two rectangles one next to the other
 const PauseButton = () => {
     return (
       <svg viewBox="0 0 100 100">

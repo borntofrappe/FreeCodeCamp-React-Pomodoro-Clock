@@ -1,10 +1,13 @@
 .Input {
+  /* display the label and div responsible for the input element one next to the other */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
+  /* center vertically */
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
+  /* separate the two input areas from one another */
   margin: 1rem 0;
 }
 .Input label {
@@ -12,6 +15,7 @@
   margin: 0 0.5rem;
 }
 .Input .InputSession {
+  /* display the buttons and input element on top of one another */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -19,6 +23,7 @@
   -webkit-box-direction: normal;
       -ms-flex-direction: column;
           flex-direction: column;
+  /* center horizontally */
   -webkit-box-align: center;
       -ms-flex-align: center;
           align-items: center;
@@ -26,10 +31,12 @@
 .Input .InputSession button {
   width: 2rem;
   height: 2rem;
-  color: #4f6881;
+  /* color made cascading to the svg through currentColor */
+  color: var(--color-theme-lighter);
   background: none;
   border: none;
 }
+/* rotate the buttons to have them pointing upwards/downwards */
 .Input .InputSession button:nth-of-type(odd) {
   -webkit-transform: rotate(-90deg);
           transform: rotate(-90deg);
@@ -39,36 +46,41 @@
           transform: rotate(90deg);
 }
 .Input .InputSession button svg {
+  /* spread the SVG to have the visual spread to the width and height of the parent button element */
   width: 100%;
   height: 100%;
   fill: currentColor;
+  /* transition for the hover, focus and active states */
   -webkit-transition: all 0.2s ease-out;
   transition: all 0.2s ease-out;
 }
+/* on hover slightly scale the buttons and reset the color to its orginal lightness */
 .Input .InputSession button:hover svg,
 .Input .InputSession button:focus svg {
   -webkit-transform: scale(1.1);
           transform: scale(1.1);
-  color: #324252;
+  color: var(--color-theme-light);
 }
+/* when active notably scale the buttons and again reset the color */
 .Input .InputSession button:active svg {
   -webkit-transform: scale(1.3);
           transform: scale(1.3);
-  color: #324252;
+  color: var(--color-theme-light);
 }
-.Input .InputSession input {
-  width: 3rem;
-  height: 2.25rem;
-  background: none;
-  border: none;
-  color: inherit;
+.Input .InputSession h2 {
+  /* style the text to be boldy displayed in the screen */
   font-size: 1.4rem;
   font-weight: bold;
   font-family: inherit;
-  text-align: center;
+  /* separate the text from the surrounding elements */
+  margin: 0.5rem 0.75rem;
 }
 
-
+/* on smaller viewports 
+- display the input elements in a single column layout (centered horizontally)
+- include the input element and the connected buttons in a row
+- position the arrow facing upwards to the right of the input, and the one facing downwards to the left
+*/
 @media (max-width: 600px) {
 
   .Input {

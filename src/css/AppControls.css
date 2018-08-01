@@ -1,4 +1,8 @@
 .AppControls {
+  /* 
+  display the buttons on top of one another
+  separate them while also allowing for space around them
+  */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -10,36 +14,52 @@
       justify-content: space-around;
 }
 .AppControls button {
+  /* style the buttons to be round */
   width: 4.25rem;
   height: 4.25rem;
   border-radius: 50%;
+  /* include the same color of the background, and with the box-shadow property a neat border around it */
+  /* border doesn't allow the same subtlety of multiple shadows  */
   background: inherit;
-  -webkit-box-shadow: 0 0 0 1px #ececec, 0 0 0 3px #324252;
-          box-shadow: 0 0 0 1px #ececec, 0 0 0 3px #324252;
+  -webkit-box-shadow: 0 0 0 1px var(--color-theme-white), 0 0 0 3px var(--color-theme-light);
+          box-shadow: 0 0 0 1px var(--color-theme-white), 0 0 0 3px var(--color-theme-light);
   border: none;
   outline: none;
-  color: #324252;
-  -webkit-transition: all 0.15s ease-out;
-  transition: all 0.15s ease-out;
+  /* color specified to have it cascade to the SVG fill */
+  color: var(--color-theme-light);
+  /* transition for the hover and active state */
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 .AppControls button:hover,
 .AppControls button:focus {
-  -webkit-box-shadow: 0 0 0 2px #ececec, 0 0 0 7px #324252;
-          box-shadow: 0 0 0 2px #ececec, 0 0 0 7px #324252;
+  /* on hover alter the shadows to expand the ring */
+  -webkit-box-shadow: 0 0 0 2px var(--color-theme-white), 0 0 0 7px var(--color-theme-light);
+          box-shadow: 0 0 0 2px var(--color-theme-white), 0 0 0 7px var(--color-theme-light);
 }
 .AppControls button:active {
-  background: #324252;
-  color: #ececec;
+  /* when active, flip the color and background properties */
+  /* scale the buttons to be slightly bigger */
+  background: var(--color-theme-light);
+  color: var(--color-theme-white);
+  /* scale the buttons more horizontally than vertically */
   -webkit-transform: scaleX(1.2) scaleY(1.08);
           transform: scaleX(1.2) scaleY(1.08);
 }
 .AppControls button svg {
+  /* stretch the svg to cover 80% of the button (given the SVG syntax, it is always centered) */
   width: 80%;
   height: 80%;
+  /* inherit the hue set by the color property of the parent element */
   fill: currentColor;
 }
 
+/*
+on smaller viewports stretch the section to cover the single column of the App component 
+include vertical spacing to have the controls separate themselves from the visuals and the inputs 
 
+display the button in a single row
+*/
 @media (max-width: 600px) {
   .AppControls {
     grid-column: span 1;

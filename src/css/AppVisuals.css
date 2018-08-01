@@ -1,5 +1,7 @@
 .AppVisuals {
+    /* have the first section spread to cover two columns */
     grid-column: span 2;
+    /* position the div responsible for the hourglass and its timer on top of one another */
     display: -webkit-box;
     display: -ms-flexbox;
     display: flex;
@@ -13,25 +15,33 @@
 }
 
 .AppVisuals .VisualsHourglass {
-    width: 225px;
-    height: 225px;
+    /* // include a circle which visually relays the time left in the session */
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
+    /* include a nice border around the circle */
     -webkit-box-shadow: 0 0 0 5px var(--color-theme-white), 0 0 0 10px var(--color-theme-light);
             box-shadow: 0 0 0 5px var(--color-theme-white), 0 0 0 10px var(--color-theme-light);
+            /* how much time is left is conveyed by the linear gradient, and the threshold at which point the solid color turns transparent, with a hard stop */
     background: -webkit-gradient(linear, left bottom, left top, color-stop(100%, var(--color-theme-light)), to(transparent));
-    background: linear-gradient(to top, var(--color-theme-light) 100%, transparent 100%);
+    background: linear-gradient(to top, var(--color-theme-light) var(--gradient-height), transparent var(--gradient-height));
+    /* separate the visual from the header below */
     margin: 2rem 0;
 }
 
-.AppVisuals .VisualsTimer {
-    font-size: calc(3rem + 1vw);
-    font-family: var(--font-timer);
-}
 .AppVisuals .VisualsSession {
     font-size: calc(1rem + 1vw);
     text-transform: uppercase;
 }
+.AppVisuals .VisualsTimer {
+    font-size: calc(3rem + 1vw);
+    font-family: var(--font-timer);
+}
 
+/*
+on smaller viewports have the section span the entire width of the parent component (as the grid has only one column)
+reduce the visual weight of the 'hourglass'
+*/
 @media (max-width: 600px) {
     .AppVisuals {
       grid-column: span 1;

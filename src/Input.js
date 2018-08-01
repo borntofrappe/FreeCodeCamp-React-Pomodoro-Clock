@@ -2,27 +2,31 @@ import React from 'react';
 import PlayButton from './svg/PlayButton';
 import './css/Input.css';
 
+/*
+render the input including a label and a header displaying the length of the sessions 
+surrounded by buttons which increment and decrement the value found in the state 
+*/
 const Input = (props) => {
-  let sessionType = props.session;
 
     return (
       <div className="Input">
-        <label>{sessionType} session</label>
+        <label>{props.for} session</label>
 
         <div className="InputSession">
-          <button>
+          <button onClick={props.increment} id={props.reference[0]}>
             <PlayButton />
           </button>
 
-          <input type="text" value="25"/>
+          <h2>{props.value}</h2>
 
-          <button>
+          <button onClick={props.decrement} id={props.reference[0]}>
             <PlayButton />
           </button>
 
         </div>
       </div>
     );
+
 }
 
 export default Input;

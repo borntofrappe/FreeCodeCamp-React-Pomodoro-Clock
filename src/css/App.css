@@ -1,22 +1,30 @@
 .App {
+  /* limit the width of the application */
   max-width: 800px;
   width: 90vw;
+  /* create a grid of three columns each covering a third of the container */
   display: grid;
   grid-template-columns: repeat(3, 1fr);
+  /* center the content of the sections in the column(s) */
   justify-items: center;
+  /* include the chosen color and some padding to distance the content from the surrounding borders */
   background: var(--color-theme-white);
   padding: 5vh 0;
+  /* separate the card from the top of the page */
   margin: 5vh 0;
-  border-radius: 20px;
-  -webkit-box-shadow: 0 0 4px var(--color-theme-white);
-          box-shadow: 0 0 4px var(--color-theme-white);
 }
+/*
+for smaller viewports 
+- have the app cover the entirety of the screen
+- have each section occupy the single column
+*/
 @media (max-width: 600px) {
   .App {
-    width: 100vw;
-    border-radius: 0;
-    grid-template-columns: 1fr;
+    /* min height included to have the page display the block at least as tall as the viewport */
     min-height: 100vh;
+    width: 100vw;
     margin: 0;
+    padding: 0;
+    grid-template-columns: 1fr;
   }
 }
