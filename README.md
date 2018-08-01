@@ -291,3 +291,7 @@ Starting with the app's functionalities:
     ```
 
   - for the working session only, the change should occur for the `state.working` value as well as `state.timer.minutes`, to immediately change the UI.
+
+**Closing Notes**
+
+Following the previous notes, I got a first version of the application working. From there I got the time and the energy to go through the codebased and comment the code found in the different folders. 

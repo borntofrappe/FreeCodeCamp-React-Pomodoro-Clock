@@ -5,14 +5,16 @@
 
 - #ECECEC for the application background
 - #324252 for the application theme (color and body's background)
+- #4f6881 and #192129 as variations of the theme color
 */
 :root {
   --font-timer: 'Nova Mono', monospace;
   --font-text: 'Ubuntu', sans-serif;
-
   --color-theme-white: #ececec;
+  --color-theme-lighter: #4f6881;
   --color-theme-light: #324252;
   --color-theme-dark: #192129;
+  /* define a variable which is updated in the script to visually relay the amount of time left (by changing the linear-gradient used as background) */
   --gradient-height: 100%;
 }
 * {
@@ -25,13 +27,14 @@ body {
   width: 100%;
   font-family: var(--font-text);
   color: var(--color-theme-light);
+  /* include a gradient around the color chosen for the body */
   background: -webkit-gradient(linear, left top, right top, from(var(--color-theme-light)), color-stop(var(--color-theme-dark)), to(var(--color-theme-light)));
   background: linear-gradient(to right, var(--color-theme-light), var(--color-theme-dark), var(--color-theme-light));
+  /* center the application horizontally and include some vertical padding */
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
-  overflow-x: hidden;
 }
