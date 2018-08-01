@@ -260,3 +260,34 @@ Starting with the app's functionalities:
 
   Actually using the application first-hand made me realize how the logic of the timer is a little weak when it comes to include the value of `minutes`. Indeed minutes are included in the `working`, `break` and `timer.minutes` fields. I included a timer for clarity, to isolate its logic in the state, but it might not be the best solution. `working` and `timer.minutes` need to basically hold the same value, which is kind of a bother.
 
+- `appInputs` needs to update the length of the different sessions, and that is achieved simply with a function which updates the state as needed.
+
+  ```JSX
+  incrementWorking() {
+    let working = this.state.working;
+    this.setState({
+      working: working + 1
+    });
+  }
+  ```
+
+  Four variations of the described function, to increment and decrement the working and break session respectively. A few notes are however warranted:
+
+  - the length of both sessions cannot exceed 60, nor go below 0. This is achieved by including different conditionals in the increment and decrement functions.
+
+    ```JSX
+    // increment if 
+    if(working >= 0 && working < 60)
+    // decrement if 
+    if(working > 0 && working <= 60)
+    ```
+
+  - the change in input should occur only if the timer is not running. This choice should be matched visually by including perhaps a class which avoids the transition on hover/focus/active or perhaps include other visual cues.
+
+    ```JSX
+    if(!this.state.isRunning) {
+      // increment/ decrement logic
+    }
+    ```
+
+  - for the working session only, the change should occur for the `state.working` value as well as `state.timer.minutes`, to immediately change the UI.

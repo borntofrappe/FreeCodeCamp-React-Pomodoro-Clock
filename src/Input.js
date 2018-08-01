@@ -2,19 +2,19 @@ import React from 'react';
 import PlayButton from './svg/PlayButton';
 import './css/Input.css';
 
-const Input = () => {
+const Input = (props) => {
     return (
       <div className="Input">
-        <label>Session</label>
+        <label>{props.for} session</label>
 
         <div className="InputSession">
-          <button>
+          <button onClick={props.increment}>
             <PlayButton />
           </button>
 
-          {/* <input type="text" value={25}/> */}
+          <span>{props.value}</span>
 
-          <button>
+          <button onClick={props.decrement}>
             <PlayButton />
           </button>
 

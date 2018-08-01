@@ -29,6 +29,11 @@ class App extends Component {
     this.startPauseTimer = this.startPauseTimer.bind(this);
     this.resetTimer = this.resetTimer.bind(this);
     this.timerIsRunning = this.timerIsRunning.bind(this);
+
+    this.incrementWorking = this.incrementWorking.bind(this);
+    this.decrementWorking = this.decrementWorking.bind(this);
+    this.incrementBreak = this.incrementBreak.bind(this);
+    this.decrementBreak = this.decrementBreak.bind(this);
     
   }
 
@@ -101,6 +106,59 @@ class App extends Component {
     });
   }
 
+  incrementWorking() {
+    if(!this.state.isRunning) {
+      let working = this.state.working;
+      if(working >= 0 && working < 60) {
+        this.setState({
+          working: working + 1,
+          timer: {
+            session: 'working',
+            minutes: working + 1,
+            seconds: 0
+          }
+        });
+      }
+    }
+  }
+  decrementWorking() {
+    if(!this.state.isRunning) {
+      let working = this.state.working;
+      if(working > 0 && working <= 60) {
+        this.setState({
+          working: working - 1,
+          timer: {
+            session: 'working',
+            minutes: working - 1,
+            seconds: 0
+          }
+        });
+      }
+    }
+  }
+
+  incrementBreak() {
+    if(!this.state.isRunning) {
+      let breaky = this.state.break;
+      if(breaky >= 0 && breaky < 60) {
+        this.setState({
+          break: breaky + 1
+        });
+      }
+    }
+  }
+
+  decrementBreak() {
+    if(!this.state.isRunning) {
+      let breaky = this.state.break;
+      if(breaky > 0 && breaky <= 60) {
+        this.setState({
+          break: breaky - 1
+        });
+      }
+    }
+  }
+
   /*
   render 
   - a component relaying the amount of time left and the current session 
@@ -116,7 +174,13 @@ class App extends Component {
           isRunning={this.state.isRunning} 
           startPauseTimer={this.startPauseTimer} 
           resetTimer={this.resetTimer} />
-        <AppInputs />
+        <AppInputs 
+          working={this.state.working}
+          break={this.state.break}
+          incrementWorking={this.incrementWorking}
+          decrementWorking={this.decrementWorking}
+          incrementBreak={this.incrementBreak}
+          decrementBreak={this.decrementBreak} />
       </div>
     );
   }
