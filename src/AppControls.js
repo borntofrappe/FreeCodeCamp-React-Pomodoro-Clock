@@ -5,13 +5,13 @@ import PauseButton from './svg/PauseButton';
 import ResetButton from './svg/ResetButton';
 
 const AppControls = () => {
-  
+
   let isRunning = false;
   return (
     <div className="AppControls">
       <button>
         {
-          (isRunning) ? <PauseButton />: <PlayButton />
+          isRunning ? <PauseButton />: <PlayButton />
         }
       </button>
       <button>

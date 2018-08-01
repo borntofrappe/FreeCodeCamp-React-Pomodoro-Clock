@@ -72,14 +72,56 @@ I include this last point because I rarely incorporated audio in my projects. Up
 
 The following component-based structure is included on the basis of the HTML markup created for the project's UI.
 
+**src**
+
 - `index.js` renders the stateful component responsible for the application;
 
-- `App.js` manages the state and includes the components which render the data.
+- `App.js` manages the state and includes the components responsible for the UI of the application the data.
 
-- `AppVisuals` which relay the status of the timer. Visual, timer, string.
+- `AppVisuals` relays the status of the session. Here you find a visual of a hourglass, paired with two elements displaying the current session and the detailed time left in the session (in the `mm:ss` format).
 
 - `AppControls` includes the buttons to start/pause and reset the timer.
 
-- `AppInputs` allows to tweak the settings behind the application. 
+- `AppInputs` allows to tweak the settings behind the application. With input elements and buttons to alter the length of the sessions.
 
-The application makes use of quite a few `<svg>` elements, which are included as stateless functional components. Their only job is rendering a single element.
+**svg**
+
+The buttons shown in the last two components nest each an `<svg>` element, visually portraying the purpose of each one of them. These SVG assets are included as stateless functional components and imported as needed. They are stored in a nested folder as their purpose is solely the rendering of a visual.
+
+These are:
+
+- `PlayButton`, rendering a right-facing arrow. The visual is actually used in the `AppInputs` component as well for the increment and decrement buttons, so its name might be modified to respect that.
+
+- `PauseButton`, rendering two rectangle elements side by side. As noted in the user stories, there exist a single button responsible to play and pause the timer. The idea with two SVG assets is to render the one or the other visual depending on the app's status.
+
+- `ResetButton`, rendering a square. The design of the SVG might actually be subject to modifications, to relay its purpose a little better. Indeed the square is more connected to a `StopButton` (which was actually the purpose I had in mind before I read the user stories).
+
+**css**
+
+In yet another separate folder, CSS files are included to style the different components.
+
+**State**
+
+As the functionalities of the applications are included in `App.js`, through the state of the component, a bit of planning is warranted. Indeed, without preparation I previously found mystelf quite wasting considerable time shuffling from one component to another, trying to fit the requirements of each nested structure into the main component's state.
+
+Starting with the app's functionalities:
+
+- `AppVisuals` needs to update the application's UI in terms of 
+
+  1. how much time is left;
+  
+  1. which session is currently ongoing (working or break). 
+  
+  The component scope is purely visual. It needs to simply re-render the elements with the updated values. As such, there is no need to specify methods to update the state, given that those will be isolated in `App.js`.
+
+  Given the information the component needs, the state can specify an object nesting the following properties:
+
+  - `isRunning`; a boolean describing whether or not the timer is running;
+
+  - working; an integer specifying the length of the working session. It is perhaps useful to isolate such a variable as it wiill be updated throgh the `AppInputs` component;
+
+  - `break`; an integer reflecting the same logic specified earlier, but with respect to the break session;
+
+  - `timer`; itself an object specifying the `session`, its `minutes` and `seconds`. All values which the timer needs to consider. 
+  
+  I already realize how this structure is far from complete, but it is a good starting point for the first section of the application.

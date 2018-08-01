@@ -19,8 +19,8 @@
   border: none;
   outline: none;
   color: #324252;
-  -webkit-transition: all 0.15s ease-out;
-  transition: all 0.15s ease-out;
+  -webkit-transition: all 0.2s ease-out;
+  transition: all 0.2s ease-out;
 }
 .AppControls button:hover,
 .AppControls button:focus {

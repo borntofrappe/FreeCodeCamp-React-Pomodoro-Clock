@@ -14,27 +14,30 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      isRunning: false,
+      working: 25,
+      break: 5,
       timer: {
-        minutes: 8,
+        session: 'working',
+        minutes: 25,
         seconds: 0
-      },
-      session: [
-        'working',
-        'break'
-      ]
+      }
     }
+    
   }
+
+  
 
   /*
   render 
   - a component relaying the amount of time left and the current session 
   - a component to start/pause or reset the timer 
-  - a component to alter the length of the sessions
+  - a component to modify the length of the sessions
   */
   render() {
     return (
       <div className="App">
-        <AppVisuals timer={this.state.timer} session={this.state.session[0]} />
+        <AppVisuals timer={this.state.timer} />
         <AppControls />
         <AppInputs />
       </div>

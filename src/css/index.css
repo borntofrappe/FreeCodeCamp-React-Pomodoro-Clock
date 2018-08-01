@@ -13,6 +13,7 @@
   --color-theme-white: #ececec;
   --color-theme-light: #324252;
   --color-theme-dark: #192129;
+  --gradient-height: 100%;
 }
 * {
   -webkit-box-sizing: border-box;
@@ -32,4 +33,5 @@ body {
   -webkit-box-pack: center;
       -ms-flex-pack: center;
           justify-content: center;
+  overflow-x: hidden;
 }

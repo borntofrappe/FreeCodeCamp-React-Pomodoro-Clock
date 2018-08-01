@@ -2,19 +2,17 @@ import React from 'react';
 import PlayButton from './svg/PlayButton';
 import './css/Input.css';
 
-const Input = (props) => {
-  let sessionType = props.session;
-
+const Input = () => {
     return (
       <div className="Input">
-        <label>{sessionType} session</label>
+        <label>Session</label>
 
         <div className="InputSession">
           <button>
             <PlayButton />
           </button>
 
-          <input type="text" value="25"/>
+          <input type="text" value={25}/>
 
           <button>
             <PlayButton />

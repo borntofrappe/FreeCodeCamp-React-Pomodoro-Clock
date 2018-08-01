@@ -13,13 +13,13 @@
 }
 
 .AppVisuals .VisualsHourglass {
-    width: 225px;
-    height: 225px;
+    width: 200px;
+    height: 200px;
     border-radius: 50%;
     -webkit-box-shadow: 0 0 0 5px var(--color-theme-white), 0 0 0 10px var(--color-theme-light);
             box-shadow: 0 0 0 5px var(--color-theme-white), 0 0 0 10px var(--color-theme-light);
     background: -webkit-gradient(linear, left bottom, left top, color-stop(100%, var(--color-theme-light)), to(transparent));
-    background: linear-gradient(to top, var(--color-theme-light) 100%, transparent 100%);
+    background: linear-gradient(to top, var(--color-theme-light) var(--gradient-height), transparent var(--gradient-height));
     margin: 2rem 0;
 }
 

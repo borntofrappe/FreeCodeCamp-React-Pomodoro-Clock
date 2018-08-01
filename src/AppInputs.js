@@ -5,8 +5,8 @@ import Input from './Input';
 const AppInputs = () => {
     return (
       <div className="AppInputs">
-        <Input session="working"/>
-        <Input session="break"/>
+        <Input/>
+        <Input/>
       </div>
     );
 }
