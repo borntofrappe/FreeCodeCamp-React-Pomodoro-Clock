@@ -10,10 +10,8 @@
   /* include the chosen color and some padding to distance the content from the surrounding borders */
   background: var(--color-theme-white);
   padding: 5vh 0;
+  /* separate the card from the top of the page */
   margin: 5vh 0;
-  border-radius: 20px;
-  -webkit-box-shadow: 0 0 4px var(--color-theme-white);
-          box-shadow: 0 0 4px var(--color-theme-white);
 }
 /*
 for smaller viewports 
@@ -25,7 +23,6 @@ for smaller viewports
     /* min height included to have the page display the block at least as tall as the viewport */
     min-height: 100vh;
     width: 100vw;
-    border-radius: 0;
     margin: 0;
     padding: 0;
     grid-template-columns: 1fr;

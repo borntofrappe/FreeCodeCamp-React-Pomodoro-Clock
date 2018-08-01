@@ -2,6 +2,10 @@ import React from 'react';
 import './css/AppInputs.css';
 import Input from './Input';
 
+/*
+render two components responsible for the different input elements 
+using a component which displays different values and leverages different functions according to the value passed as attributes 
+*/
 const AppInputs = (props) => {
 
     return (
@@ -18,6 +22,7 @@ const AppInputs = (props) => {
           decrement={props.decrementBreak} />
       </div>
     );
+
 }
 
 export default AppInputs;

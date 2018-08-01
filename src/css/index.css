@@ -4,16 +4,16 @@
 - Ubuntu for the input's text
 
 - #ECECEC for the application background
-- #324252 for the application theme (color and body's background)
-- #4f6881 and #192129 as variations of the theme color
+- #ca4f4f for the application theme (color and body's background)
+- #ed7575 and #aa4343 as variations of the theme color
 */
 :root {
   --font-timer: 'Nova Mono', monospace;
   --font-text: 'Ubuntu', sans-serif;
-  --color-theme-white: #ececec;
-  --color-theme-lighter: #4f6881;
-  --color-theme-light: #324252;
-  --color-theme-dark: #192129;
+  --color-theme-white: #fff;
+  --color-theme-lighter: #dc8a8a;
+  --color-theme-light: #d15c5c;
+  --color-theme-dark: #c43434;
   /* define a variable which is updated in the script to visually relay the amount of time left (by changing the linear-gradient used as background) */
   --gradient-height: 100%;
 }

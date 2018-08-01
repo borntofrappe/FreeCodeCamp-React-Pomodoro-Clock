@@ -294,4 +294,20 @@ Starting with the app's functionalities:
 
 **Closing Notes**
 
-Following the previous notes, I got a first version of the application working. From there I got the time and the energy to go through the codebased and comment the code found in the different folders. 
+Following the previous notes, I got a first version of the application working. From there I got the time and the energy to go through the codebase and comment the code found in the different folders. 
+
+Additionally, I updated the `AppVisuals` component to keep track of how much time is left in the session and change the variable responsible for the linear gradient accordingly.
+
+```JSX
+//  to update the hourglass UI, consider the length of the current session (in seconds), consider how much time is left (in seconds) and update the CSS variable responsible for the linear-gradient
+let root = document.querySelector(":root");
+let sessionLength = props[session] * 60;
+let sessionLeft = minutes * 60 + seconds;
+
+// the gradient variable needs to be updated with a percentage value
+// range: from 100% when the timer begins, 0% when it ends
+// to obtain the value divide the time left by the total time, retrieving a 0.x value which becomes smaller and smaller the more the timer continues
+// multiply by 100 and round it to have a 100-0 range
+let sessionPercentage = Math.floor(sessionLeft/sessionLength*100);
+root.style.setProperty("--gradient-height", `${sessionPercentage}%`);
+```

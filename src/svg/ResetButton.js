@@ -1,6 +1,6 @@
 import React from 'react';
-// import './css/ResetButton.css';
 
+// render an SVG element displaying a square
 const ResetButton = () => {
     return (
       <svg viewBox="0 0 100 100">
