@@ -13,6 +13,7 @@
 .Input label {
   font-size: 2rem;
   margin: 0 0.5rem;
+  text-transform: capitalize;
 }
 .Input .InputSession {
   /* display the buttons and input element on top of one another */
@@ -70,8 +71,6 @@
 .Input .InputSession h2 {
   /* style the text to be boldy displayed in the screen */
   font-size: 1.4rem;
-  font-weight: bold;
-  font-family: inherit;
   /* separate the text from the surrounding elements */
   margin: 0.5rem 0.75rem;
 }

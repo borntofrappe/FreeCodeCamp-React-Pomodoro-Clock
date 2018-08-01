@@ -19,7 +19,7 @@ const Input = (props) => {
 
           <h2>{props.value}</h2>
 
-          <button onClick={props.decrement} id={props.reference[0]}>
+          <button onClick={props.decrement} id={props.reference[1]}>
             <PlayButton />
           </button>
 
