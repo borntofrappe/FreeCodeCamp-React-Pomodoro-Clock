@@ -2,7 +2,7 @@ _Notice_
 
 The application is currently being developed with the `create-react-app` utility. It will be published on CodePen with most of its functionalities, hopefully soon.
 
-<!-- Link to the working pen right [here](ADD WORKING PEN URL) -->
+Link to the working pen passing _every single_ test right [here](https://codepen.io/borntofrappe/full/bjvmaJ/).
 
 ## Preface
 

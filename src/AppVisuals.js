@@ -44,6 +44,7 @@ const AppVisuals = (props) => {
         </h2>
       </div>
     );
+    
 }
 
 export default AppVisuals;
