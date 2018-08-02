@@ -224,6 +224,7 @@ class App extends Component {
   - a component relaying the amount of time left and the current session 
   - a component to start/pause or reset the timer 
   - a component to modify the length of the sessions
+  - an audio element used to play a sound-bite when the timer hits 00:00
   */
   render() {
     return (
