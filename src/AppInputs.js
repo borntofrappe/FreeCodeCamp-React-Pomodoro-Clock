@@ -11,14 +11,14 @@ const AppInputs = (props) => {
     return (
       <div className="AppInputs">
         <Input
-          reference={['session-increment', 'session-decrement']}
-          for="working"
+          id={['session-label', 'session-length', 'session-increment', 'session-decrement']}
+          label="working"
           value={props.working}
           increment={props.incrementWorking}
           decrement={props.decrementWorking} />
         <Input
-          reference={['break-increment', 'break-decrement']}
-          for="break"
+          id={['break-label', 'break-length', 'break-increment', 'break-decrement']}
+          label="break"
           value={props.break}
           increment={props.incrementBreak}
           decrement={props.decrementBreak} />

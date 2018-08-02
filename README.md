@@ -28,11 +28,11 @@ With the given UI, the project is ported to a React application using the `creat
 
 In order to fulfill the requirements of the freeCodeCamp testing suite, the project needs to fulfill several user stories, hereby included. I acknowledge them early in the development process to assess if the user stories demand particular tweaks to the overall design of the application.
 
-- [ ] there exist an element with `id="break-label` containing a string, as well as an element with `id="session-label` with again a string.
+- [x] there exist an element with `id="break-label` containing a string, as well as an element with `id="session-label` with again a string.
 
 - [x] there exist two clickable elements with `id="break-decrement` and `id="break-increment`, as well as two clickable elements with `id="session-decrement` and `id="session-increment`.
 
-- [ ] there exist an element with `id="break-length` displaying `5` by default, as well as an elemen wih `id="session-length`, displaying by default `25`.
+- [x] there exist an element with `id="break-length` displaying `5` by default, as well as an elemen wih `id="session-length`, displaying by default `25`.
 
 - [x] there exist an element with `id="timer-label`, which is something I haven't included in my UI. This ought to contain a string indicating that the session is begun. (showing how the timer relays a working or break session)
 
@@ -56,9 +56,9 @@ In order to fulfill the requirements of the freeCodeCamp testing suite, the proj
 
 - [x] if the timer is paused, upon clicking `#start_stop`, the timer should start again, from the paused value. 
 
-- [ ] upon hitting `00:00`, a new timer should begin and the `#time-label` should relay of the change of session (from working to break and vice versa). Moreover, the timer should take the value from the respective _length_ element, `id="break-length` or `id="session-length`.
+- [x] upon hitting `00:00`, a new timer should begin and the `#time-label` should relay of the change of session (from working to break and vice versa). Moreover, the timer should take the value from the respective _length_ element, `id="break-length` or `id="session-length`.
 
-- [ ] upon hitting `00:00`, a sound should be played to notify that the session is over. It should make use of the `<audio>` element with `id="beep"`. The sound must be 1s or longer. The sound must cease when resetting the timer, even prior to its completion.
+- [x] upon hitting `00:00`, a sound should be played to notify that the session is over. It should make use of the `<audio>` element with `id="beep"`. The sound must be 1s or longer. The sound must cease when resetting the timer, even prior to its completion.
 
 A long list of requirements if there is one. The UI I created for the project does not need major adjustments, just the few noted next to the different user stories. The main challenges seem to be:
 
@@ -312,4 +312,38 @@ let sessionPercentage = Math.floor(sessionLeft/sessionLength*100);
 root.style.setProperty("--gradient-height", `${sessionPercentage}%`);
 ```
 
-Finally, I considered the user stories to fulfill each one of them.
+Finally, I considered the user stories to fulfill each one of them. As expected, the last user story, the one regarding playing the audio element, proved to be the most challenging. Not too challenging though. 
+
+As necessary, I included an HTML `<audio>` element. In the main `App` component for the time being.
+
+```JSX
+return(
+  <audio>
+    <source src="http://www.peter-weinberg.com/files/1014/8073/6015/BeepSound.wav" type="audio/wav"/>
+  </audio>
+);
+```
+
+Before the `render` method, two functions are then included to play and stop the audio respectively.
+
+```JSX
+playAudio() {
+  let audio = document.querySelector("audio");
+  audio.play();
+}
+stopAudio() {
+  let audio = document.querySelector("audio");
+  if(!audio.paused) {
+    audio.pause();
+    audio.currentTime = 0;
+  }
+}
+```
+
+I am sure this approach is rather rough, and a bit of research will prove it to be extremely naive, but it accomplishes the final functionality of the application.
+
+The functions are included as needed, in the function updating the state, as to play the audio when the timer hits `00:00`, and in the functions bound to the buttons, as to stop the audio when the timer is reset, but also when it is paused (personal preference to include this last option, as I feel the sound should stop whichever control is used).
+
+_Small note_
+
+Apparently, there is no need to bind the `playAudio` and `stopAudio` functions, but I need more research regarding as why. It is perhaps because they are not passed as argument to child components, or because they do not alter the state. Something else to research.

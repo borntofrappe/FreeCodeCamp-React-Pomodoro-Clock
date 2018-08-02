@@ -28,6 +28,8 @@ class App extends Component {
     - timerIsRunning to modify the state at every iteration (this function is run every second thank to the interval set up by startPauseTimer)
   
     - increment and decrement functions, for the working and break sessions, to resolve the purpose of the name they bear
+
+    - playAudio and stopAudio to respectively play and stop the audio provided through the HTML <audio> element
   */
 
   constructor(props) {
@@ -53,7 +55,6 @@ class App extends Component {
     this.decrementWorking = this.decrementWorking.bind(this);
     this.incrementBreak = this.incrementBreak.bind(this);
     this.decrementBreak = this.decrementBreak.bind(this);
-    
   }
 
   /* switch isRunning from true to false and vice versa */
@@ -65,6 +66,8 @@ class App extends Component {
 
   /* toggle isRunning and depending on its value clear the existing interval or start a new one, calling a function which updates the state */
   startPauseTimer() {
+    // call a function to stop the audio (if it is playing)
+    this.stopAudio();
     this.toggleIsRunning();
     if(this.state.isRunning) {
       clearInterval(this.state.interval);
@@ -79,6 +82,8 @@ class App extends Component {
 
   // clear the interval and restore the state to the initial values
   resetTimer() {
+    // call a function to stop the audio (if it is playing)
+    this.stopAudio();
     clearInterval(this.state.interval);
     this.setState({
         isRunning: false,
@@ -104,6 +109,8 @@ class App extends Component {
 
     if(seconds === 0) {
       if(minutes === 0) {
+        // call a function to play the audio, as the timer hits 00:00
+        this.playAudio();
         if(session === 'working') {
           session = 'break';
           minutes = this.state.break;
@@ -200,6 +207,18 @@ class App extends Component {
     }
   }
 
+  playAudio() {
+    let audio = document.querySelector("audio");
+    audio.play();
+  }
+  stopAudio() {
+    let audio = document.querySelector("audio");
+    if(!audio.paused) {
+      audio.pause();
+      audio.currentTime = 0;
+    }
+  }
+
   /*
   render 
   - a component relaying the amount of time left and the current session 
@@ -227,6 +246,10 @@ class App extends Component {
           decrementWorking={this.decrementWorking}
           incrementBreak={this.incrementBreak}
           decrementBreak={this.decrementBreak} />
+
+        <audio>
+          <source src="http://www.peter-weinberg.com/files/1014/8073/6015/BeepSound.wav" type="audio/wav"/>
+        </audio>
           
       </div>
     );
